@@ -10,13 +10,14 @@ function ImagePopup({ card, isOpen, onClose }) {
                     onClick={onClose}>
                 </button>
                 <figure className="popup__image">
-                    <img className="popup__image-link" src={card.link} alt={card.name} />
+                    <img
+                        className="popup__image-link"
+                        src={card.link}
+                        alt={card.name} />
                     <figcaption className="popup__image-caption"></figcaption>
                 </figure>
             </div>
         </div>
-    )
-
-}
+    )}
 
 export default ImagePopup;

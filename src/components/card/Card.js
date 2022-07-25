@@ -12,7 +12,9 @@ function Card({ card, onCardClick }) {
                 alt={card.name}
                 onClick={handleClick}
             />
-            <button className="cards__remove-button" type="button" >
+            <button
+                className="cards__remove-button"
+                type="button" >
             </button>
             <div className="cards__description">
                 <h2 className="cards__heading">{card.name}</h2>

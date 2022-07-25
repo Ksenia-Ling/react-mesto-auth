@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { api } from '../../utils/Api.js';
 import Card from '../card/Card.js';
 
 function Main({ onEditAvatar, onAddPlace, onEditProfile, onCardClick }) {
 
-    const [userName, setUserName] = React.useState("");
-    const [userDescription, setUserDescription] = React.useState("");
-    const [userAvatar, setUserAvatar] = React.useState("");
-    const [cards, setCards] = React.useState([]);
+    const [userName, setUserName] = useState("");
+    const [userDescription, setUserDescription] = useState("");
+    const [userAvatar, setUserAvatar] = useState("");
+    const [cards, setCards] = useState([]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         api.getUserInfo()
             .then((userInfo) => {
                 setUserName(userInfo.name);
@@ -27,18 +27,22 @@ function Main({ onEditAvatar, onAddPlace, onEditProfile, onCardClick }) {
             .catch((err) => {
                 console.log(err)
             })
-    })
+    }, [])
 
     return (
         <main className="content">
             <section className="profile">
+                
                 <div className="profile__avatar-container">
-                    <img className="profile__avatar" src={userAvatar}
+                    <img
+                        className="profile__avatar"
+                        src={userAvatar}
                         alt="аватар пользователя" />
                     <button
                         className="profile__avatar-overlay"
-                        onClick={onEditAvatar}></button>
+                        onClick={onEditAvatar} />
                 </div>
+
                 <div className="profile__info">
                     <div className="profile__user-edit">
                         <div className="profile__user-data">
@@ -49,23 +53,23 @@ function Main({ onEditAvatar, onAddPlace, onEditProfile, onCardClick }) {
                             className="profile__edit-button"
                             type="button"
                             aria-label="Кнопка редактирования профиля"
-                            onClick={onEditProfile}>
-                        </button>
+                            onClick={onEditProfile} />
                     </div>
                     <button
                         className="profile__add-button"
                         type="button"
                         aria-label="Кнопка добавления карточек"
-                        onClick={onAddPlace}>
-                    </button>
+                        onClick={onAddPlace} />
                 </div>
             </section>
+            
             <section className="elements">
                 <ul className="cards">
                     {cards.map((card) => {
                         return (
                             <Card
                                 card={card}
+                                key={card._id}
                                 onCardClick={onCardClick} />
                         )
                     })
