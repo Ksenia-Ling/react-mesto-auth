@@ -24,7 +24,7 @@ function EditAvatarPopup({ onUpdateAvatar, isOpen, onClose }) {
             isOpen={isOpen}
             submitText="Сохранить"
             onClose={onClose}
-            omSubmit={handleSubmit}>
+            onSubmit={handleSubmit}>
 
             <input
                 type="url"
