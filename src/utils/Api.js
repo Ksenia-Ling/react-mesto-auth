@@ -11,7 +11,6 @@ class Api {
     return Promise.reject(`Ошибка ${res.status}`);
   }
 
-
   // получение информации о пользователе
   getUserInfo() {
     return fetch(`${this._url}/users/me`, { headers: this._headers })
@@ -61,30 +60,20 @@ class Api {
   }
 
   // метод редактирования аватара пользователя
-  editAvatar(avatarLink) {
+  editAvatar(avatarInfo) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: avatarLink
+        avatar: avatarInfo.avatar
       })
     })
       .then(this._checkResponce)
   }
 
-  // метод добавления лайка
-  addLike(cardId) {
+  changeLikeCardStatus(cardId, isLiked) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
-      method: 'PUT',
-      headers: this._headers,
-    })
-      .then(this._checkResponce)
-  }
-
-  // метод удаления лайка
-  removeLike(cardId) {
-    return fetch(`${this._url}/cards/${cardId}/likes`, {
-      method: 'DELETE',
+      method: isLiked ? 'PUT' : 'DELETE',
       headers: this._headers,
     })
       .then(this._checkResponce)
@@ -98,3 +87,4 @@ export const api = new Api({
     'Content-Type': 'application/json'
   }
 });
+
