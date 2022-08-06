@@ -23,24 +23,17 @@ function App() {
 
     useEffect(() => {
         api.getUserInfo()
-            .then((userInfo) => {
-                setCurrentUser(userInfo)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }, [])
+            .then(setCurrentUser)
+            .catch(console.log)
+    }
+        , [])
 
     useEffect(() => {
-
         api.getInitialCards()
-            .then((card) => {
-                setCards(card)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }, [])
+            .then(setCards)
+            .catch(console.log)
+    }
+        , [])
 
 
     function handleEditProfileClick() {
@@ -60,6 +53,7 @@ function App() {
         setIsImagePopupOpen(true);
     }
 
+
     function handleCardLike(card) {
         const isLiked = card.likes.some(i => i._id === currentUser._id);
         api
@@ -67,8 +61,8 @@ function App() {
             .then((newCard) => {
                 setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
             })
-
-    }
+            .catch(console.log);
+    };
 
     function handleCardDelete(card) {
         api
@@ -77,31 +71,23 @@ function App() {
                 setCards((state) => state.filter((c) => c._id !== card._id));
                 closeAllPopups();
             })
-    }
+            .catch(console.log);
+
+    };
 
     function handleUpdateUser(userInfo) {
         api
             .editProfile(userInfo.name, userInfo.about)
-            .then((newInfo) => {
-                setCurrentUser(newInfo);
-                closeAllPopups();
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
+            .then(setCurrentUser, closeAllPopups())
+            .catch(console.log);
+    };
 
     function handleUpdateAvatar(userAvatar) {
         api
             .editAvatar(userAvatar)
-            .then((newAvatar) => {
-                setCurrentUser(newAvatar);
-                closeAllPopups();
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
+            .then(setCurrentUser, closeAllPopups())
+            .catch(console.log);
+    };
 
     function handleAddPlaceSubmit(cardInfo) {
         api
@@ -110,10 +96,8 @@ function App() {
                 setCards([newCard, ...cards]);
                 closeAllPopups();
             })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
+            .catch(console.log);
+    };
 
     function closeAllPopups() {
         setIsEditProfilePopupOpen(false);
@@ -121,7 +105,7 @@ function App() {
         setIsAddPlacePopupOpen(false);
         setSelectedCard({});
         setIsImagePopupOpen(false);
-    }
+    };
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
