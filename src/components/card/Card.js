@@ -9,7 +9,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
     const cardRemoveVisibility = { visibility: isOwn ? 'visible' : 'hidden' };
 
     const isLiked = card.likes.some(i => i._id === currentUser._id);
-    const cardLikeButtonClassName = (
+    const cardLikeButtonclassName = (
         `cards__like-button ${isLiked ? 'cards__like-button_active' : ''}`
     );
 
@@ -43,7 +43,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
                 <h2 className="cards__heading">{card.name}</h2>
                 <div className="cards__likes-container">
                     <button
-                        className={cardLikeButtonClassName}
+                        className={cardLikeButtonclassName}
                         type="button"
                         onClick={handleLikeClick}>
                     </button>
