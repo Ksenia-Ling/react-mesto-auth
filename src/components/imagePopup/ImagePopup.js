@@ -1,8 +1,6 @@
-import React from 'react';
-
 function ImagePopup({ card, isOpen, onClose }) {
     return (
-        <div className={`popup popup_type_image-zoom ${isOpen ? 'popup_opened' : ''}`}>
+        <div className={`popup popup_type_image-zoom ${isOpen && 'popup_opened'}`}>
             <div className="popup__image-container">
                 <button
                     type="button"

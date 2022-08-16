@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import Header from '../header/Header.js';
 import Main from '../main/Main.js';
@@ -15,7 +15,6 @@ import Login from '../login/Login.js';
 import Register from '../register/Register.js';
 import InfoToolTip from '../infoToolTip/InfoToolTip.js';
 import * as auth from '../../utils/Auth';
-
 
 function App() {
 
@@ -35,12 +34,11 @@ function App() {
 
     const history = useHistory();
 
-
     useEffect(() => {
         const token = localStorage.getItem('jwt');
         if (!token) {
             return
-        } else {
+        } 
             auth
                 .checkToken(token)
                 .then((res) => {
@@ -49,7 +47,6 @@ function App() {
                     history.push('/');
                 })
                 .catch(console.log)
-        }
     }, [])
 
     useEffect(() => {
@@ -69,7 +66,6 @@ function App() {
                 .catch(console.log)
         }
     }, [isLoggedIn])
-
 
     function handleRegister(info) {
         auth
@@ -123,7 +119,6 @@ function App() {
         setSelectedCard(card);
         setIsImagePopupOpen(true);
     }
-
 
     function handleCardLike(card) {
         const isLiked = card.likes.some(i => i._id === currentUser._id);
@@ -217,10 +212,6 @@ function App() {
                         onCardLike={handleCardLike}
                         onCardDelete={handleCardDelete}
                     />
-{/* 
-                    <Route>
-                        {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
-                    </Route> */}
                     
                 </Switch>
 
@@ -261,14 +252,14 @@ function App() {
                 <ImagePopup
                     card={selectedCard}
                     isOpen={isImagePopupOpen}
-                    onClose={closeAllPopups}
-                >
+                    onClose={closeAllPopups}>
                 </ImagePopup>
 
                 <InfoToolTip
                     isOpen={isToolTipPopupOpen}
                     onClose={closeAllPopups}
-                    isCheckInSuccessful={isRegistered}>
+                    isCheckInSuccessful={isRegistered}
+                    toolTipText={isRegistered ? "Вы успешно зарегистрировались!" : "Что-то пошло не так! Попробуйте ещё раз"}>
                 </InfoToolTip>
 
             </div>

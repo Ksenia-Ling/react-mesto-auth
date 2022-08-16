@@ -26,8 +26,7 @@ function Register({ onRegister }) {
             <h3 className="register__title">Регистрация</h3>
             <form
                 className="register__form"
-                onSubmit={handleSubmit}
-                noValidate>
+                onSubmit={handleSubmit}>
                 <input
                     type="email"
                     className="register__input"

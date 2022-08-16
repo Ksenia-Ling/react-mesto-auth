@@ -12,7 +12,6 @@ function Header({ loggedIn, onLogOut, email }) {
     }
 
     return (
-        <>
             <header className="header">
                 <img
                     className="header__logo"
@@ -20,7 +19,7 @@ function Header({ loggedIn, onLogOut, email }) {
                     alt="лого 'Mesto Russia'" />
                 <Switch>
                     <Route path="/sign-in">
-                        <div className={`header__container ${!loggedIn ? "header__container_logout" : ""}`}>
+                        <div className={`header__container ${!loggedIn && "header__container_logout"}`}>
                             <nav>
                                 <NavLink to="/sign-up" className="header__link">
                                     Регистрация
@@ -29,7 +28,7 @@ function Header({ loggedIn, onLogOut, email }) {
                         </div>
                     </Route>
                     <Route path="/sign-up">
-                        <div className={`header__container ${!loggedIn ? "header__container_logout" : ""}`}>
+                        <div className={`header__container ${!loggedIn && "header__container_logout"}`}>
                             <nav>
                                 <NavLink to="/sign-in" className="header__link">
                                     Войти
@@ -51,7 +50,6 @@ function Header({ loggedIn, onLogOut, email }) {
                     </Route>
                 </Switch>
             </header>
-        </>
     );
 }
 
