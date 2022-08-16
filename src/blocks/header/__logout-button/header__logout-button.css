@@ -6,8 +6,9 @@
     font-weight: 400;
     font-size: 18px;
     background-color: black;
-    color: white;
+    color: #A9A9A9;
     cursor: pointer;
+    border: none;
 }
 
 .header__logout-button:hover {

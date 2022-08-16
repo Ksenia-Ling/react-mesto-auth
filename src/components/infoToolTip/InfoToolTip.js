@@ -1,5 +1,5 @@
-// import checkMarkPic from "../../images/popup/checkMark.svg";
-// import crossPic from "../../images/popup/cross.svg";
+import checkMarkPic from "../../images/popup/checkmark_pic.svg";
+import crossPic from "../../images/popup/cross_pic.svg";
 
 function InfoToolTip({ isOpen, onClose, isCheckInSuccessful }) {
     return (
@@ -12,7 +12,7 @@ function InfoToolTip({ isOpen, onClose, isCheckInSuccessful }) {
                 </button>
                 <img
                     className="popup__checkin-pic"
-                    // src={isCheckInSuccessful ? checkMarkPic : crossPic}
+                    src={isCheckInSuccessful ? checkMarkPic : crossPic}
                     alt="Индикатор регистрации" />
                 <h3
                     className="popup__checkin-tooltip">

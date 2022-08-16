@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.nomoreparties.co';
+export const BASE_URL = 'https://auth.nomoreparties.co';
 
 const checkResponce = (response) =>
     response.ok
@@ -19,7 +19,7 @@ export const register = (data) => {
 };
 
 export const authorize = (data) => {
-    return fetch(`${BASE_URL}/sign-in`, {
+    return fetch(`${BASE_URL}/signin`, {
         method: 'POST',
         headers,
         body: JSON.stringify({ email: data.email, password: data.password})

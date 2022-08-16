@@ -45,13 +45,12 @@ function App() {
                 .checkToken(token)
                 .then((res) => {
                     setEmail(res.data.email);
-                    localStorage.setItem('jwt', res.token);
                     setIsLoggedIn(true);
                     history.push('/');
                 })
                 .catch(console.log)
         }
-    })
+    }, [])
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -92,7 +91,7 @@ function App() {
             .authorize(info)
             .then((res) => {
                 localStorage.setItem('jwt', res.token);
-                setEmail(res.email);
+                setEmail(info.email);
                 setIsLoggedIn(true);
                 history.push('/');
             })
