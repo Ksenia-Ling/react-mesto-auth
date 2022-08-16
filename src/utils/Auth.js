@@ -9,30 +9,30 @@ const headers = {
     'Content-Type': 'application/json',
 }
 
-export const register = ({ password, email }) => {
-    return fetch(`${BASE_URL}/sign-up`, {
+export const register = (data) => {
+    return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
         headers,
-        body: JSON.stringify({ password, email })
+        body: JSON.stringify({ email: data.email, password: data.password })
     })
         .then(res => checkResponce(res))
 };
 
-export const authorize = ({ password, email }) => {
+export const authorize = (data) => {
     return fetch(`${BASE_URL}/sign-in`, {
         method: 'POST',
         headers,
-        body: JSON.stringify({ password, email })
+        body: JSON.stringify({ email: data.email, password: data.password})
     })
         .then(res => checkResponce(res))
 };
 
-export const checkToken = ({token}) => {
+export const checkToken = (token) => {
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
         headers: {
             ...headers,
-            "Authorization" : `Bearer ${token}`
+            Authorization : `Bearer ${token}`
         },
     })
         .then(res => checkResponce(res))

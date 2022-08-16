@@ -31,7 +31,7 @@ function Register({ onRegister }) {
                 <input
                     type="email"
                     className="register__input"
-                    name="register-email-input"
+                    name="email"
                     id="register-email-input"
                     placeholder="Email"
                     minLength="4"
@@ -43,7 +43,7 @@ function Register({ onRegister }) {
                 <input
                     type="password"
                     className="register__input"
-                    name="register-password-input"
+                    name="password"
                     id="register-password-input"
                     placeholder="Пароль"
                     minLength="6"

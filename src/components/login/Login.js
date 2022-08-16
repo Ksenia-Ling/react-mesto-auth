@@ -32,7 +32,7 @@ function Login({ onLogin }) {
                 <input
                     type="email"
                     className="login__input"
-                    name="login-email-input"
+                    name="email"
                     id="login-email-input"
                     placeholder="Email"
                     value={loginData.email}
@@ -41,7 +41,7 @@ function Login({ onLogin }) {
                 <input
                     type="password"
                     className="login__input"
-                    name="login-password-input"
+                    name="password"
                     id="login-password-input"
                     placeholder="Пароль"
                     value={loginData.password}

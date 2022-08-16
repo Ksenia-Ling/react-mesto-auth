@@ -98,12 +98,13 @@ function App() {
             })
             .catch((err) => {
                 console.log(err);
+                setisToolTipPopupOpen(true);
             })
     }
 
     function handleLogOut() {
         setIsLoggedIn(false);
-        localStorage.removeItem('token');
+        localStorage.removeItem('jwt');
         history.push('/sign-in');
     }
 
@@ -265,10 +266,10 @@ function App() {
                 >
                 </ImagePopup>
 
-                <InfoToolTip>
+                <InfoToolTip
                     isOpen={isToolTipPopupOpen}
                     onClose={closeAllPopups}
-                    isCheckInSuccessful={isRegistered}
+                    isCheckInSuccessful={isRegistered}>
                 </InfoToolTip>
 
             </div>
